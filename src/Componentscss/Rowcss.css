@@ -1,6 +1,7 @@
 .row{
     margin-top: 10px;
-    color:rgb(235, 235, 235)
+    color:rgb(235, 235, 235);
+    
 }
 .movielist{
     display: inline-block;
@@ -16,18 +17,19 @@
 }
 .poster{
     border-radius: 5px;
-    height: 250px;
+    height: 200px;
+    width: 150px;
     transition:width 0.5s,height 0.5s;
     
 }
 .poster:hover{
     position: relative;
-    width:250px;
-    height:270px;
+    width:160px;
+    height:220px;
 }
 .poster_title{
     position: relative;
-    font-size: smaller;
+    font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 

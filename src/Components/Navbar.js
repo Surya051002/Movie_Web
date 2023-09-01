@@ -7,12 +7,12 @@ const Navbar=()=>{
 
          
             <img  src={logo} width={200} height={100} />
-
             
-                <input type="text" placeholder="search"/>
+            
+                {/* <input type="text" placeholder="search"/>
                 <button className='icon'>
                     <FaSearch/>
-                </button>
+                </button> */}
             
             
         
