@@ -4,8 +4,10 @@ import '../Componentscss/Navbarcss.css'
 const Navbar=()=>{
     return(
         <>
-         <div className='innernav'>
-            <img src={logo} width={200} height={100}/>
+
+         
+            <img  src={logo} width={200} height={100} />
+
             
                 <input type="text" placeholder="search"/>
                 <button className='icon'>
@@ -13,7 +15,7 @@ const Navbar=()=>{
                 </button>
             
             
-         </div>
+        
         </>
     )
 }

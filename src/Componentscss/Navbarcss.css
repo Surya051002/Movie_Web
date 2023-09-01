@@ -1,8 +1,7 @@
-.innernav{
-    display: flex;
-    background-color: black;
-    color:red;
-    font-size: xx-large;
+
+.navbar{
+    background:attach;
+
 }
 input{
     margin-left: 400px;
@@ -15,8 +14,8 @@ input{
 .icon{
     background-color: transparent;
     border: 0;
-    position:relative;
-    margin-left:480px;
-    margin-top: 7px;
+    position:absolute;
+    margin-left:680px;
+    margin-top: 45px;
    
 }
