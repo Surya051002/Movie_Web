@@ -5,7 +5,7 @@ import Youtube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
 const Row=({url,title})=>{
-    var moviecount=0;
+    const youtubeapi='AIzaSyCzg-pJZkc1u714afgIX46U8LtEKfrhcLA'
     const [Movie,setMovie]=useState([]);
     const [movieurl,setmovieurl]=useState("");
 
@@ -20,38 +20,40 @@ const Row=({url,title})=>{
         console.log(Movie);
     },[Movie])
 
-    function handleurl(currentmovie){
-            if(movieurl){
+    async function handleurl(currentmovie){
+            if(movieurl===currentmovie){
                 setmovieurl("");
             }
             else{
-                    movieTrailer(currentmovie?.title||"").then(movieurl=>{
-                        const urlParams = new URLSearchParams(new URL(movieurl).search)
-
-          setmovieurl(urlParams.get('v'))
-                        console.log(movieurl)
-                    }).catch((err)=>{
-                                console.log(err);
-                    })
+                  const req=await fetch(`https://www.googleapis.com/youtube/v3/search?q=${currentmovie}trailer%20trailer&part=snippet&type=video&key=${youtubeapi}`).then((r)=>r.json()).catch((err)=>console.log(err));
+                  console.log(req);
+                  const temp= await req.items[0].id.videoId;
+                  setmovieurl(temp)
+                  console.log(movieurl);
             }
     }
 
+    const opts={
+        Width:'300',
+        height:'300',
+        playerVars:{
+            autoplay:1,
+        },
+    };
+
     return(
             <div className="row">
+                {movieurl && <Youtube videoId={movieurl} opts={opts}/>}
                 <h1>{title}</h1>
                 <div className="flex_movie">
                 {
                     
                     Movie.map((values,key)=>{
-                        moviecount++;
-                        if(moviecount===10){
-                            moviecount--;
-                            return;
-                        }
+                    
                         return(
                             <>
                            <h1 className="items">
-                            <img onClick={()=>{handleurl(values)}} className="poster" src={`https://image.tmdb.org/t/p/w200${values.poster_path}`}/>
+                            <img onClick={()=>{handleurl(values.name?values.name:values.title)}} className="poster" src={`https://image.tmdb.org/t/p/w200${values.poster_path}`}/>
                             <br/>
                             <span className="poster_title">{values.name?values.name:values.title}</span>
                             </h1>   
@@ -59,7 +61,7 @@ const Row=({url,title})=>{
                         )
                     })
                 }
-                {movieurl && <Youtube videoId={movieurl} />}
+               
                 </div>
             </div>  
     )
