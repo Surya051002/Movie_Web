@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 function App() {
  
-
+ const name="....demo";
   return (
     <div className="App">
     <div  className="Nav">
