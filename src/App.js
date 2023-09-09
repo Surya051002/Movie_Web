@@ -5,26 +5,27 @@ import Navbar from './Components/Navbar';
 import requests from './requests';
 import Youtube  from 'react-youtube'
 import { useState } from 'react';
+import Movieplay from './Components/Movieplay';
 
 function App() {
- 
- const name="....demo";
+   const [play,setPlay]=useState();
   return (
     <div className="App">
     <div  className="Nav">
-     <Navbar/>
-
+     <Navbar url={requests.fetchTrending} play={play}/>
+     
      </div >
+     
      <div className='contents'>
     
-     <Row url={requests.fetchTrending} title={"Trending"} />
-     <Row url={requests.fetchNetflixOriginals} title={"NetflixOriginals"} />
-     <Row url={requests.fetchActionMovies} title={"ActionMovies"} />
-     <Row url={requests.fetchComedyMovies} title={"ComedyMovies"} />
-     <Row url={requests.fetchHorrorMovies} title={"HorrorMovies"} />
-     <Row url={requests.fetchRomanceMovies} title={"RomanceMovies"} />
-     <Row url={requests.fetchDocumentaries} title={"Documentaries"} />
-     <Row url={requests.fetchTopRated} title={"TopRated"} />
+     <Row url={requests.fetchTrending} title={"Trending"} setPlay={setPlay}/>
+     <Row url={requests.fetchNetflixOriginals} title={"NetflixOriginals"} setPlay={setPlay}/>
+     <Row url={requests.fetchActionMovies} title={"ActionMovies"} setPlay={setPlay}/>
+     <Row url={requests.fetchComedyMovies} title={"ComedyMovies"} setPlay={setPlay}/>
+     <Row url={requests.fetchHorrorMovies} title={"HorrorMovies"} setPlay={setPlay}/>
+     <Row url={requests.fetchRomanceMovies} title={"RomanceMovies"} setPlay={setPlay}/>
+     <Row url={requests.fetchDocumentaries} title={"Documentaries"} setPlay={setPlay}/>
+     <Row url={requests.fetchTopRated} title={"TopRated"} setPlay={setPlay}/>
      
     </div>
 

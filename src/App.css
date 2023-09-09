@@ -4,9 +4,11 @@
     color:red;
     font-size: xx-large;
 }
-.Nav
-{
-  
+.playing{
+  width: 20vw;
+}
+.youtube{
+  width: 100px;
   
 }
 .contents

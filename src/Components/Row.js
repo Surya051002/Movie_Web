@@ -4,9 +4,9 @@ import '../Componentscss/Rowcss.css'
 import Youtube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
-const Row=({url,title})=>{
+const Row=({url,title,setPlay})=>{
     const youtubeapi='AIzaSyCzg-pJZkc1u714afgIX46U8LtEKfrhcLA'
-    const [Movie,setMovie]=useState([]);
+    var [Movie,setMovie]=useState([]);
     const [movieurl,setmovieurl]=useState("");
 
     useEffect(()=>{
@@ -30,26 +30,24 @@ const Row=({url,title})=>{
                   const temp= await req.items[0].id.videoId;
                   setmovieurl(temp)
                   console.log(movieurl);
+                  setPlay(temp);
             }
     }
 
-    const opts={
-        Width:'300',
-        height:'300',
-        playerVars:{
-            autoplay:1,
-        },
-    };
+   
+    var c=10;
 
     return(
             <div className="row">
-                {movieurl && <Youtube videoId={movieurl} opts={opts}/>}
+                
                 <h1>{title}</h1>
                 <div className="flex_movie">
                 {
                     
                     Movie.map((values,key)=>{
-                    
+                       if(c<3)
+                        return;     
+                       c--;
                         return(
                             <>
                            <h1 className="items">
